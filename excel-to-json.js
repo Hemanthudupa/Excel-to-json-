@@ -2,7 +2,7 @@ const excel = require("xlsx");
 const { writeFileSync } = require("fs");
 
 const readData = excel.readFile(
- "path"
+"C:\\Users\\heman\\Downloads\\CHANDAN KUMAR JHARJHAL.xlsx"
 );
 
 const sheetNames = readData.SheetNames[0];
@@ -28,19 +28,19 @@ const data = excel.utils.sheet_to_json(sheets);
 
 */
 
-const updatedData = data.map((ele) => {
-  return {
-    HP: Number(ele["motor hp"]),
-    clientid: ele["clientid"] + "",
+// const updatedData = data.map((ele) => {
+//   return {
+//     HP: Number(ele["hp"]),
+//     clientid: ele["Cliend ID"] + "",
   
-    lat:(ele["latlong"]?.split(",")[0]),
-    long: (ele["latlong"]?.split(",")[1]),
-    userName: ele["Username"],
-    password: ele["Pass"],
-    imeiNo: ele["Dispatch"] + "",
-  };
-});
-writeFileSync("today-meda.json", JSON.stringify(updatedData), { encoding: "utf-8" });
+//     lat:(ele["latitude,longitude"]?.split(",")[0]),
+//     long: (ele["latitude,longitude"]?.split(",")[1]),
+//     userName: ele["User Name"],
+//     password: ele["Pass"],
+//     imeiNo: ele["IMEI"] + "",
+//   };
+// });
+writeFileSync("chandan-kumar.json", JSON.stringify(data), { encoding: "utf-8" });
 
 function getLatLong(latlong) {
   const first = Number(latlong.split(",")[0].split(" ")[0]);
